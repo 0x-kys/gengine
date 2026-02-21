@@ -1,0 +1,16 @@
+gengine-bin
+*.exe
+*.out
+*.app
+
+*.o
+*.obj
+*.so
+*.dylib
+*.a
+
+.vscode/
+.idea/
+.DS_Store
+build/
+bin/
