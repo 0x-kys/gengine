@@ -14,3 +14,5 @@ gengine-bin
 .DS_Store
 build/
 bin/
+
+docs/dodos
