@@ -1,0 +1,25 @@
+`src/main.cc`
+
+- `gldwWindowHint` which sets the rules before the window exists. `gladLoadGLLoader` maps the function pointers to the graphic driver.
+
+- vertex data management
+    - VBO (Vertex Buffer Object) -> the raw memory on the GPU containing `points`
+    - VAO (Vertex Array Object) -> a macro that records which VBO to use and how the data is formatted via `glVertexAttribPointer`
+
+- render loop
+    - `glClear` resets the frame buffer to the `glClearColor` to prevent ghosting from the previous frame.
+    - `glDrawArrays` is the actual "GO" sign for the GPU
+
+`include/shader.h`
+
+- uses `std::ifstream` and `stringstream` to convert disk files int ostrings the CPU can read.
+    - the `.exceptions()` call forces the program to handle missing files explicitly via `try-catch`
+
+- compilation workflow
+    - `glCreateShader` asks the GPU for a new shader slot.
+    - `glShaderSource` uploads GLSL strings to that slot.
+    - `glCompilerShader` translates GLSL into GPU machine code.
+
+- linking combines the vertex and fragment stages into a single `ID` this is where the CPU checks if the OUT of the vertex shader matches the IN of the fragment shader.
+
+- `glDeleteShader` is used to clear individual stage objects that are no longer needed once the program is linked saving GPU memory.
